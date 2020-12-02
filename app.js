@@ -28,6 +28,7 @@ var slider = (function(){
                 setTimeout(function(){
                     isPause = false
                 },2000);
+                _wrapper.style.transition= 'transform 0s ease';
                 _wrapper.style.left = 0;
                 _wrapper.style.transition= 'transform 0.6s ease';
                 _stepc = parseInt(_stepc,10) + parseInt(_step,10);
@@ -47,11 +48,13 @@ var slider = (function(){
                 isPause = true;
                 setTimeout(function(){
                     isPause = false
-                },2000);
+                },5000);
+                _wrapper.style.transition= 'transform 0s ease';
                 _wrapper.style.left = 0;
-                _wrapper.style.transition= 'transform 0.6s ease';
+                
                 _stepc = parseInt(_stepc,10) - parseInt(_step,10);
                 _wrapper.style.transform = 'translateX(-'+_stepc+'px)';
+                _wrapper.style.transition= 'transform 0.6s ease';
                 _stepProgressC = _stepProgressC - _stepProgress;
                 style.innerHTML = '.progress-back:after {transform: translateX(' + _stepProgressC + '%);}';
                 document.querySelector('head').appendChild(style);
@@ -73,7 +76,7 @@ var slider = (function(){
             isPause = true;
                 setTimeout(function(){
                     isPause = false
-                },2000);
+                },5000);
             function moveAt(e) {
                 if (e.pageX - shiftX - _itemWidthF<1&&-(e.pageX - shiftX - _itemWidthF)< limits.right){
                     _wrapper.style.transition= 'transform 0s ease';
@@ -94,6 +97,7 @@ var slider = (function(){
             };
 
             document.querySelector('.slider__body').onmouseup = function() {
+                _wrapper.style.transition= 'transform 0s ease';
                 document.onmousemove = null;
                 _wrapper.onmouseup = null;
                 var k = parseInt(_wrapper.style.left,10) * 100 / _wrapperWidth
